@@ -65,3 +65,9 @@ resource "aws_instance" "server" {
 }
 
 
+resource "aws_s3_bucket" "count_demo" {
+
+  count = 3
+  bucket = "tf-count-demo-${count.index + 1}"
+  acl = "private" 
+}
