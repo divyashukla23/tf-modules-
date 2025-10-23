@@ -8,18 +8,29 @@ terraform {
 
   required_version = ">= 1.3.0"
 
-   backend "s3" {
-    bucket         = "terraform-state-divya"
-    key            = "dev/terraform.tfstate"
-    region         = "ap-south-1"
-    dynamodb_table = "terraform-locks"
-    encrypt        = true
-  }
+  #  backend "s3" {
+  #   bucket         = "terraform-state-divya"
+  #   key            = "dev/terraform.tfstate"
+  #   region         = "ap-south-1"
+  #   dynamodb_table = "terraform-locks"
+  #   encrypt        = true
+  # }
 }
 
 provider "aws" {
   region = var.aws_region
 }
+# instances = {
+#   web1 = {
+#       ami = "ami-078675757"
+#       type = "t2.micro"
+#     }
+
+#   web2 = {
+#       ami = "ami-645464"
+#       type = "t2.large"
+#     }
+#   }
 module "ec2_server" {
   source          = "./modules/ec2"
   ami_id          = var.ami_id

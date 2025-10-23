@@ -22,3 +22,11 @@ variable "instance_name" {
   description = "Tag name for instance"
   type        = string
 }
+
+variable "instances" {
+  type = map(object({
+    ami = string
+    type = string
+  }))
+  default = {}
+}
